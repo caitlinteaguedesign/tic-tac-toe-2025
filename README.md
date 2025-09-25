@@ -8,7 +8,7 @@ Tailwind v4 installed via these [instructions](https://tailwindcss.com/docs/inst
 
 ### CSS Reset (optional)
 
-Copied Josh W Comeau's [CSS reset](https://www.joshwcomeau.com/css/custom-css-reset/).
+Copied Josh W Comeau's [CSS reset](https://www.joshwcomeau.com/css/custom-css-reset/). Turns out Tailwind has it's own Preflight / CSS reset.
 
 ## React + TypeScript + Vite
 

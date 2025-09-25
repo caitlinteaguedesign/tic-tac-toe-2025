@@ -1,9 +1,9 @@
-function footer() {
+function Footer() {
   return (
-    <footer>
-      <h1 className="text-white text-xl">Footer</h1>
+    <footer className="p-10 pb-16 bg-zinc-700 text-white">
+      <p>Footer</p>
     </footer>
   );
 }
 
-export default footer;
+export default Footer;

@@ -1,6 +1,40 @@
 /* @import "./_reset.css"; */
+@import url("https://fonts.googleapis.com/css2?family=Days+One&family=Quicksand:wght@300..700&display=swap");
 @import "tailwindcss";
+
+:root {
+  /* fonts */
+  --font-quicksand: "Quicksand", sans-serif;
+  --font-daysone: "Days One", sans-serif;
+
+  --font-body: var(--font-quicksand);
+  --font-heading: var(--font-daysone);
+
+  /* colors */
+  --color-primary-100: #ffa0ac;
+  --color-primary-300: #f46274;
+  --color-primary-400: #dd4659;
+  --color-primary-800: #37050b;
+}
 
 body {
   background: #212429 url("../assets/what-the-hex-dark.png") center repeat;
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--color-primary-300);
+}
+
+.t3-layout {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

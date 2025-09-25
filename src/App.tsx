@@ -3,7 +3,7 @@ import Footer from "./layout/Footer";
 
 function App() {
   return (
-    <div className="t3-layout">
+    <div className="layout">
       <Main />
       <Footer />
     </div>

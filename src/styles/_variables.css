@@ -1,0 +1,14 @@
+:root {
+  /* fonts */
+  --font-quicksand: "Quicksand", sans-serif;
+  --font-daysone: "Days One", sans-serif;
+
+  --font-body: var(--font-quicksand);
+  --font-heading: var(--font-daysone);
+
+  /* colors */
+  --color-primary-100: #ffa0ac;
+  --color-primary-300: #f46274;
+  --color-primary-400: #dd4659;
+  --color-primary-800: #37050b;
+}

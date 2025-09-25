@@ -1,2 +1,6 @@
 /* @import "./_reset.css"; */
 @import "tailwindcss";
+
+body {
+  background: #212429 url("../assets/what-the-hex-dark.png") center repeat;
+}

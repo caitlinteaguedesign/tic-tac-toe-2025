@@ -1,16 +1,42 @@
 :root {
-  /* fonts */
-  --font-quicksand: "Quicksand", sans-serif;
-  --font-daysone: "Days One", sans-serif;
+  /* font family */
+  --ff-quicksand: "Quicksand", sans-serif;
+  --ff-daysone: "Days One", sans-serif;
 
-  --font-body: var(--font-quicksand);
-  --font-heading: var(--font-daysone);
+  /* semantic family */
+  --ff-body: var(--ff-quicksand);
+  --ff-heading: var(--ff-daysone);
+
+  /* font sizes */
+  --fs-0: 0.875rem; /* 14px */
+  --fs-1: 1rem; /* 16px */
+  --fs-2: 1.125rem; /* 18px */
+  --fs-3: 1.25rem; /* 20px */
+  --fs-4: 1.5rem; /* 24px */
+  --fs-4: 2rem; /* 32px */
+
+  /* semantic sizes */
+  --fs-page-title: var(--fs-4);
 
   /* colors */
+
+  /* primary */
   --color-primary-100: #ffa0ac;
-  --color-primary-300: #f46274;
-  --color-primary-400: #dd4659;
+  --color-primary-200: #f46274;
+  --color-primary-400: #e44157;
+  --color-primary-500: #c1283c;
+  --color-primary-700: #861f2b;
   --color-primary-800: #37050b;
 
-  /* --color-neutral-700: ; */
+  /* neutral */
+  --color-neutral-0: #ffffff;
+  --color-netural-100: #ccd1d6;
+  --color-neutral-200: #b3b7bb;
+  --color-neutral-400: #868a8d;
+  --color-neutral-700: #3d3f44;
+  --color-neutral-800: #27292d;
+
+  /* semantic */
+  --color-text-default: var(--color-neutral-200);
+  --color-interactive: var(--color-primary-100);
 }

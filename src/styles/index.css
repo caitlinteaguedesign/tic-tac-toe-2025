@@ -1,8 +1,9 @@
-/* @import "./_reset.css"; */
-@import url("https://fonts.googleapis.com/css2?family=Days+One&family=Quicksand:wght@300..700&display=swap");
-@import "./_variables.css";
-@import "./_default.css";
-@import "./_layout.css";
-@import "./_link.css";
-
+@layer base, theme, layout, components, utilities;
+@import url("https://fonts.googleapis.com/css2?family=Days+One&family=Quicksand:wght@300..700&display=swap")
+layer(base);
 @import "tailwindcss";
+
+@import "./_variables.css" layer(theme);
+@import "./_default.css" layer(base);
+@import "./_layout.css" layer(layout);
+@import "./_link.css" layer(utilities);

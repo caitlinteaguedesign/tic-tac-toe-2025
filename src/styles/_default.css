@@ -1,5 +1,5 @@
 body {
-  background: var(--color-neutral-800) url("../assets/what-the-hex-dark.png")
+  background: var(--color-neutral-850) url("../assets/what-the-hex-dark.png")
     center repeat;
   color: var(--color-text-default);
   font-family: var(--ff-body);

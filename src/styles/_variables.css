@@ -35,6 +35,7 @@
   --color-neutral-400: #868a8d;
   --color-neutral-700: #3d3f44;
   --color-neutral-800: #27292d;
+  --color-neutral-850: #22252a;
 
   /* semantic */
   --color-text-default: var(--color-neutral-200);

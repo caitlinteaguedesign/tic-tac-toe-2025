@@ -1,6 +1,6 @@
 function Header() {
   return (
-    <header className="flex flex-col gap-2 text-center">
+    <header className="flex flex-col gap-4 text-center">
       <h1 className="text-(length:--fs-page-title)">
         A battle of modest proportions.
       </h1>

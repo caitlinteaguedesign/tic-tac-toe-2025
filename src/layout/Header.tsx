@@ -5,7 +5,7 @@ function Header() {
         A battle of modest proportions.
       </h1>
       <p>
-        Previously dubbed "a battle of <strong>epic</strong> proportions", but
+        Previously dubbed <strong>"A battle of epic proportions!"</strong>, but
         it's just tic-tac-toe. &#x1F605;
       </p>
     </header>

@@ -13,10 +13,10 @@
   --fs-2: 1.125rem; /* 18px */
   --fs-3: 1.25rem; /* 20px */
   --fs-4: 1.5rem; /* 24px */
-  --fs-4: 2rem; /* 32px */
+  --fs-5: 2rem; /* 32px */
 
   /* semantic sizes */
-  --fs-page-title: var(--fs-4);
+  --fs-page-title: var(--fs-5);
 
   /* colors */
 

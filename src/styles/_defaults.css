@@ -1,6 +1,13 @@
 body {
-  background: #212429 url("../assets/what-the-hex-dark.png") center repeat;
-  font-family: var(--font-body);
+  background: var(--color-neutral-800) url("../assets/what-the-hex-dark.png")
+    center repeat;
+  color: var(--color-text-default);
+  font-family: var(--ff-body);
+  font-size: var(--fs-1);
+
+  @media screen and (min-width: 600px) {
+    font-size: var(--fs-2);
+  }
 }
 
 h1,
@@ -9,6 +16,6 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-heading);
-  color: var(--color-primary-300);
+  font-family: var(--ff-heading);
+  color: var(--color-primary-200);
 }

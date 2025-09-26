@@ -1,7 +1,9 @@
+import Header from "./Header";
+
 function Main() {
   return (
-    <main className="p-10 grow shrink-0">
-      <h1 className="text-white text-4xl">A battle of modest proportions.</h1>
+    <main className="p-10 pb-14 grow shrink-0 flex flex-col items-center justify-center">
+      <Header />
     </main>
   );
 }

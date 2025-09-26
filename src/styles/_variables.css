@@ -39,5 +39,5 @@
 
   /* semantic */
   --color-text-default: var(--color-neutral-200);
-  --color-interactive: var(--color-primary-100);
+  --color-text-interactive: var(--color-primary-100);
 }

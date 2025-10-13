@@ -10,6 +10,7 @@
   justify-content: center;
   font-family: var(--ff-daysone);
   font-size: var(--fs-6);
+  line-height: 1;
 
   &.square--default {
     color: var(--color-neutral-800);

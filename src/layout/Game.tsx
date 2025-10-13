@@ -1,7 +1,21 @@
+import { useState } from "react";
+import type { TSquare } from "../types/TSquare";
+
 import Button from "../components/Button";
 import Board from "../components/Board";
 
 function Game() {
+  const [history, setHistory] = useState([Array(9).fill(null)]);
+  const [currentMove, setCurrentMove] = useState(0);
+  const xIsNext = currentMove % 2 === 0;
+  const currentSquares = history[currentMove];
+
+  function handlePlay(nextSquares: TSquare[]) {
+    const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+    setHistory(nextHistory);
+    setCurrentMove(nextHistory.length - 1);
+  }
+
   return (
     <div className="game-layout">
       {/* moves and new game */}
@@ -19,7 +33,7 @@ function Game() {
       <div className="card status-layout text-center text-white">Status</div>
       {/* board */}
       <div className="card board-layout">
-        <Board />
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       {/* timer */}
       <div className="card timer-layout">

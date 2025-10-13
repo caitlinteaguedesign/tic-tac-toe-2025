@@ -1,0 +1,12 @@
+.type-page-title {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-page-title);
+  color: var(--color-primary-200);
+}
+.type-interface {
+  font-family: var(--ff-body);
+  font-size: var(--fs-1);
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+}

@@ -1,4 +1,9 @@
 .link {
   text-decoration: underline;
   color: var(--color-text-interactive);
+
+  &:focus,
+  &:active {
+    outline: 2px solid white;
+  }
 }

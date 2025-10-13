@@ -5,8 +5,8 @@ function Game() {
     <div className="grid grid-cols-3 grid-rows-3 grid-flow-col gap-3">
       <div className="card row-span-3 min-w-[166px]">
         <h2 className="type-interface">Moves</h2>
-        <Button label="Undo" style="primary" arrow="counter-clockwise" />
-        <Button label="Redo" style="primary" arrow="clockwise" />
+        <Button label="Undo" style="primary" arrow="ccw" />
+        <Button label="Redo" style="primary" arrow="cw" />
         <Button label="New Game" style="primary" />
       </div>
       <div className="card row-start-1">Status</div>

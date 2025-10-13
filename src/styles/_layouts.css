@@ -1,0 +1,22 @@
+.page-layout {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-layout {
+  width: 100%;
+  max-width: 700px;
+  display: grid;
+  grid-template-columns: 180px 1fr 180px;
+  grid-template-rows: auto 1fr auto;
+  grid-auto-flow: column;
+  gap: 0.75rem;
+}
+
+.controls-layout {
+  grid-row: span 3;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}

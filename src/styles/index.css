@@ -6,7 +6,7 @@ layer(base);
 @import "./_default.css" layer(base);
 @import "./_variables.css" layer(theme);
 @import "./_typography.css" layer(theme);
-@import "./_layout.css" layer(layout);
+@import "./_layouts.css" layer(layout);
 @import "./_card.css" layer(components);
 @import "./_buttons.css" layer(components);
 @import "./_link.css" layer(utilities);

@@ -3,7 +3,7 @@ import Footer from "./layout/Footer";
 
 function App() {
   return (
-    <div className="layout">
+    <div className="page-layout">
       <Main />
       <Footer />
     </div>

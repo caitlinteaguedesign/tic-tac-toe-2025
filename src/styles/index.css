@@ -9,4 +9,6 @@ layer(base);
 @import "./_layouts.css" layer(layout);
 @import "./_card.css" layer(components);
 @import "./_buttons.css" layer(components);
+@import "./_board.css" layer(components);
+@import "./_squares.css" layer(components);
 @import "./_link.css" layer(utilities);

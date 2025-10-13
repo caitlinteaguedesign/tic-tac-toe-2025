@@ -1,4 +1,5 @@
 import Button from "../components/Button";
+import Board from "../components/Board";
 
 function Game() {
   return (
@@ -6,7 +7,7 @@ function Game() {
       {/* moves and new game */}
       <div className="card controls-layout">
         <h2 className="type-interface mb-4">Moves</h2>
-        <div className="flex flex-col gap-2 items-center card__separator-bottom">
+        <div className="flex flex-col gap-2 pb-4 items-center card__separator-bottom">
           <Button label="Undo" style="primary" arrow="ccw" />
           <Button label="Redo" style="primary" arrow="cw" />
         </div>
@@ -15,17 +16,19 @@ function Game() {
         </div>
       </div>
       {/* status */}
-      <div className="card row-start-1 text-center text-white">Status</div>
+      <div className="card status-layout text-center text-white">Status</div>
       {/* board */}
-      <div className="card row-start-2">Board</div>
+      <div className="card board-layout">
+        <Board />
+      </div>
       {/* timer */}
-      <div className="card row-start-3">
+      <div className="card timer-layout">
         <div className="type-interface">Timer</div>
       </div>
       {/* history */}
-      <div className="card row-span-3">
+      <div className="card history-layout flex flex-col items-center">
         <h2 className="type-interface mb-4">History</h2>
-        <ol className="flex flex-col gap-2">
+        <ol className="flex flex-col gap-2 max-w-60">
           <li>
             <Button label="Go to move #" style="secondary" arrow="right" full />
           </li>

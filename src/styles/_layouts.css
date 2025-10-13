@@ -6,17 +6,64 @@
 }
 
 .game-layout {
-  width: 100%;
-  max-width: 700px;
   display: grid;
-  grid-template-columns: 180px 1fr 180px;
-  grid-template-rows: auto 1fr auto;
-  grid-auto-flow: column;
   gap: 0.75rem;
+
+  @media (min-width: 600px) {
+    grid-template-columns: 180px 1fr;
+    grid-template-rows: repeat(3, auto) 1fr;
+  }
+
+  @media (min-width: 780px) {
+    grid-auto-flow: column;
+    grid-template-columns: 180px auto 180px;
+    grid-template-rows: auto 1fr auto;
+  }
 }
 
 .controls-layout {
-  grid-row: span 3;
   display: grid;
   grid-template-rows: auto 1fr auto;
+
+  @media (min-width: 600px) {
+    grid-row: span 3;
+  }
+}
+
+.status-layout {
+  @media (min-width: 600px) {
+    grid-column-start: 2;
+  }
+
+  @media (min-width: 780px) {
+    grid-row-start: 1;
+  }
+}
+
+.board-layout {
+  @media (min-width: 600px) {
+    grid-column-start: 2;
+  }
+
+  @media (min-width: 780px) {
+    grid-row-start: 2;
+  }
+}
+
+.timer-layout {
+  @media (min-width: 600px) {
+    grid-column-start: 2;
+  }
+  @media (min-width: 780px) {
+    grid-row-start: 3;
+  }
+}
+
+.history-layout {
+  @media (min-width: 600px) {
+    grid-column: span 2;
+  }
+  @media (min-width: 780px) {
+    grid-row: span 3;
+  }
 }

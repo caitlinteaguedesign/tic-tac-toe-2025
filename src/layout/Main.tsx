@@ -1,13 +1,11 @@
 import Header from "./Header";
+import Game from "./Game";
 
 function Main() {
   return (
-    <main className="p-10 pb-14 grow shrink-0 flex flex-col items-center justify-center">
+    <main className="p-10 pb-14 grow shrink-0 flex flex-col gap-10 items-center justify-center">
       <Header />
-      <div className="card">test</div>
-      <div className="card">test</div>
-      <div className="card">test</div>
-      <div className="card">test</div>
+      <Game />
     </main>
   );
 }

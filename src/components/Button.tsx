@@ -1,3 +1,4 @@
+import type { MouseEventHandler } from "react";
 import classNames from "classnames";
 import ArrowRight from "../assets/icons/arrow-right-secondary.svg";
 import ArrowCw from "../assets/icons/arrow-cw-primary.svg";
@@ -9,6 +10,7 @@ type ButtonProps = {
   disabled?: boolean;
   arrow?: "none" | "right" | "cw" | "ccw";
   full?: boolean;
+  onButtonClick?: MouseEventHandler;
 };
 
 function Button({
@@ -17,6 +19,7 @@ function Button({
   disabled = false,
   arrow = "none",
   full = false,
+  onButtonClick,
 }: ButtonProps) {
   const btnClasses = classNames("button", `button--${style}`, {
     "button--interactive": !disabled,
@@ -40,7 +43,12 @@ function Button({
   }
 
   return (
-    <button type="button" disabled={disabled} className={btnClasses}>
+    <button
+      type="button"
+      disabled={disabled}
+      className={btnClasses}
+      onClick={onButtonClick}
+    >
       <div className="flex items-center justify-center gap-1">
         {label}
         {arrow !== "none" ? <img height={18} width={18} src={iconSrc} /> : null}

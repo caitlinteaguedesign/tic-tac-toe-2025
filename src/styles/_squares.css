@@ -23,8 +23,7 @@
   }
 }
 
-.square:focus,
-.square:active {
+.square:focus {
   outline: 2px solid var(--color-primary-400);
   outline-offset: -2px;
 }

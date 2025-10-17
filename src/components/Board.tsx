@@ -8,7 +8,7 @@ type BoardProps = {
   onPlay: Function;
 };
 
-function Board({ xIsNext, squares, onPlay }: BoardProps) {
+const Board = ({ xIsNext, squares, onPlay }: BoardProps) => {
   function handleClick(i: number) {
     if (calculateWinner(squares) || squares[i]) {
       return;

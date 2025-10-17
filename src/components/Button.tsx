@@ -13,14 +13,14 @@ type ButtonProps = {
   onButtonClick?: MouseEventHandler;
 };
 
-function Button({
+const Button = ({
   label,
   style,
   disabled = false,
   arrow = "none",
   full = false,
   onButtonClick,
-}: ButtonProps) {
+}: ButtonProps) => {
   const btnClasses = classNames("button", `button--${style}`, {
     "button--disabled": disabled,
     "button--full": full,

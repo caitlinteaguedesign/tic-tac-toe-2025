@@ -3,24 +3,64 @@ import type { TSquare } from "../types/TSquare";
 
 import Button from "../components/Button";
 import Board from "../components/Board";
+import calculateWinner from "../util/calculateWinner";
+import calculateTie from "../util/calculateTie";
+import isXNext from "../util/isXNext";
 
 const Game = () => {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
-  const xIsNext = currentMove % 2 === 0;
+  const [status, setStatus] = useState("Your move player X");
+  const xIsNext = isXNext(currentMove);
   const currentSquares = history[currentMove];
-
-  let currentPlayer = xIsNext ? "1" : "2";
-  let status = `Your move player ${currentPlayer}`;
-
-  function handlePlay(nextSquares: TSquare[]) {
+  
+  const handlePlay = (nextSquares: TSquare[]) => {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+    const nextMove = nextHistory.length - 1;
     setHistory(nextHistory);
-    setCurrentMove(nextHistory.length - 1);
+    setCurrentMove(nextMove);
+    updateGameStatus(nextHistory[nextMove], nextMove);
   }
 
-  // status = "All too easy. Wouldn't you prefer a good game of chess?";
-  // status = "A strange game. The only winning move is not to play.";
+  const undoMove = () => {
+    if(currentMove > 1) {
+      goToMove(currentMove - 1);
+    }
+  }
+
+  const redoMove = () => {
+    if(currentMove < (history.length - 1)) {
+      goToMove(currentMove + 1);
+    }
+  }
+
+  const resetGame = () => {
+    setHistory([Array(9).fill(null)]);
+    setCurrentMove(0);
+    setStatus("Your move player X");
+  }
+
+  const goToMove = (move: number) => {
+    setCurrentMove(move);
+    updateGameStatus(history[move], move);
+  }
+  
+  const updateGameStatus = (squares: TSquare[], move: number) => {
+    setStatus(`Your move player ${isXNext(move) ? "X" : "O"}`);
+
+    const winningSquares = calculateWinner(squares);
+
+    if(winningSquares) {
+      const winnerName = squares[winningSquares[0]];
+      setStatus(`Player ${winnerName}, wouldn't you prefer a good game of chess?`);
+    }
+
+    else {
+      if(calculateTie(squares)) {
+        setStatus("A strange game. The only winning move is not to play.");
+      }
+    }
+  }
 
   return (
     <div className="game-layout">
@@ -28,11 +68,11 @@ const Game = () => {
       <div className="card controls-layout">
         <h2 className="type-interface mb-4">Moves</h2>
         <div className="flex flex-col gap-2 pb-4 items-center card__separator-bottom">
-          <Button label="Undo" style="primary" arrow="ccw" />
-          <Button label="Redo" style="primary" arrow="cw" />
+          <Button label="Undo" style="primary" arrow="ccw" onButtonClick={() => undoMove()} />
+          <Button label="Redo" style="primary" arrow="cw" onButtonClick={() => redoMove()} />
         </div>
         <div className="flex justify-center card__separator-top pt-8 pb-4">
-          <Button label="New Game" style="primary" />
+          <Button label="New Game" style="primary" onButtonClick={() => resetGame()} />
         </div>
       </div>
       {/* status */}
@@ -61,7 +101,7 @@ const Game = () => {
               ) : (
                 <Button
                   label={`Go to Move ${i + 1}`}
-                  onButtonClick={() => setCurrentMove(i + 1)}
+                  onButtonClick={() => goToMove(i + 1)}
                   style="secondary"
                   arrow="right"
                   full

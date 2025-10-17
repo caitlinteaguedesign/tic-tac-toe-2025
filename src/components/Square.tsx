@@ -4,14 +4,14 @@ import classNames from "classnames";
 
 type SquareProps = {
   value: TSquare;
-  winning?: boolean;
+  winner?: boolean;
   onSquareClick: MouseEventHandler;
 };
 
-const Square = ({ value, winning = false, onSquareClick }: SquareProps) => {
+const Square = ({ value, winner = false, onSquareClick }: SquareProps) => {
   const squareClasses = classNames("square", {
-    "square--default": !winning,
-    "square--winning": winning,
+    "square--default": !winner,
+    "square--winning": winner,
   });
   return (
     <button type="button" onClick={onSquareClick} className={squareClasses}>

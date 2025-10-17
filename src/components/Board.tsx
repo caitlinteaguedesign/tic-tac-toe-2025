@@ -9,8 +9,10 @@ type BoardProps = {
 };
 
 const Board = ({ xIsNext, squares, onPlay }: BoardProps) => {
+  const winningSquares = calculateWinner(squares) || false;
+
   function handleClick(i: number) {
-    if (calculateWinner(squares) || squares[i]) {
+    if (winningSquares || squares[i]) {
       return;
     }
     const nextSquares = squares.slice();
@@ -28,7 +30,7 @@ const Board = ({ xIsNext, squares, onPlay }: BoardProps) => {
         <Square
           key={`square_${i}`}
           value={squares[i]}
-          winning={i === 0 || i === 1 || i === 2}
+          winner={winningSquares && (i === winningSquares[0] || i === winningSquares[1] || i === winningSquares[2])}
           onSquareClick={() => handleClick(i)}
         />
       ))}

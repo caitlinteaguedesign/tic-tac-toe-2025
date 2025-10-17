@@ -22,7 +22,6 @@ function Button({
   onButtonClick,
 }: ButtonProps) {
   const btnClasses = classNames("button", `button--${style}`, {
-    "button--interactive": !disabled,
     "button--disabled": disabled,
     "button--full": full,
   });

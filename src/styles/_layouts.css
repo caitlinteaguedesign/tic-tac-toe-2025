@@ -16,7 +16,7 @@
 
   @media (min-width: 780px) {
     grid-auto-flow: column;
-    grid-template-columns: 180px auto 180px;
+    grid-template-columns: 180px 278px 180px;
     grid-template-rows: auto 1fr auto;
   }
 }

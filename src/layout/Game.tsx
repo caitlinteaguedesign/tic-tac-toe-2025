@@ -4,7 +4,7 @@ import type { TSquare } from "../types/TSquare";
 import Button from "../components/Button";
 import Board from "../components/Board";
 
-function Game() {
+const Game = () => {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
   const xIsNext = currentMove % 2 === 0;

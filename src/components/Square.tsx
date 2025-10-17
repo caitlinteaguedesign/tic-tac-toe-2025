@@ -8,7 +8,7 @@ type SquareProps = {
   onSquareClick: MouseEventHandler;
 };
 
-function Square({ value, winning = false, onSquareClick }: SquareProps) {
+const Square = ({ value, winning = false, onSquareClick }: SquareProps) => {
   const squareClasses = classNames("square", {
     "square--default": !winning,
     "square--winning": winning,

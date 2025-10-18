@@ -8,9 +8,9 @@ import calculateTie from "../util/calculateTie";
 import isXNext from "../util/isXNext";
 
 const Game = () => {
-  const [history, setHistory] = useState([Array(9).fill(null)]);
-  const [currentMove, setCurrentMove] = useState(0);
-  const [status, setStatus] = useState("Your move player X");
+  const [history, setHistory] = useState<TSquare[][]>([Array(9).fill(null)]);
+  const [currentMove, setCurrentMove] = useState<number>(0);
+  const [status, setStatus] = useState<string>("Your move player X");
   const xIsNext = isXNext(currentMove);
   const currentSquares = history[currentMove];
 

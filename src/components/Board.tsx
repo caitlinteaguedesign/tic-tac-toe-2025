@@ -25,21 +25,23 @@ const Board = ({ xIsNext, squares, onPlay }: BoardProps) => {
   }
 
   return (
-    <div className="board">
-      {squares.map((_square, i) => (
-        <Square
-          key={`square_${i}`}
-          id={i}
-          value={squares[i]}
-          winner={
-            winningSquares &&
-            (i === winningSquares[0] ||
-              i === winningSquares[1] ||
-              i === winningSquares[2])
-          }
-          onSquareClick={() => handleClick(i)}
-        />
-      ))}
+    <div className="card board-layout">
+      <div className="board">
+        {squares.map((_square, i) => (
+          <Square
+            key={`square_${i}`}
+            id={i}
+            value={squares[i]}
+            winner={
+              winningSquares &&
+              (i === winningSquares[0] ||
+                i === winningSquares[1] ||
+                i === winningSquares[2])
+            }
+            onSquareClick={() => handleClick(i)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

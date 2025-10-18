@@ -6,11 +6,13 @@ import Board from "../components/Board";
 import calculateWinner from "../util/calculateWinner";
 import calculateTie from "../util/calculateTie";
 import isXNext from "../util/isXNext";
+import StopWatch from "../components/StopWatch";
 
 const Game = () => {
   const [history, setHistory] = useState<TSquare[][]>([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState<number>(0);
   const [status, setStatus] = useState<string>("Your move player X");
+  const [timerState, toggleTimer] = useState<boolean>(true);
   const xIsNext = isXNext(currentMove);
   const currentSquares = history[currentMove];
 
@@ -47,6 +49,7 @@ const Game = () => {
 
   const updateGameStatus = (squares: TSquare[], move: number) => {
     setStatus(`Your move player ${isXNext(move) ? "X" : "O"}`);
+    toggleTimer(true);
 
     const winningSquares = calculateWinner(squares);
 
@@ -55,9 +58,11 @@ const Game = () => {
       setStatus(
         `Player ${winnerName}, wouldn't you prefer a good game of chess?`
       );
+      toggleTimer(false);
     } else {
       if (calculateTie(squares)) {
         setStatus("A strange game. The only winning move is not to play.");
+        toggleTimer(false);
       }
     }
   };
@@ -93,14 +98,10 @@ const Game = () => {
       </div>
       {/* status */}
       <div className="card status-layout text-center text-white">{status}</div>
-      {/* board */}
-      <div className="card board-layout">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
-      </div>
-      {/* timer */}
-      <div className="card timer-layout">
-        <div className="type-interface">Timer</div>
-      </div>
+
+      <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+      <StopWatch isRunning={timerState} />
+
       {/* history */}
       <div className="card history-layout">
         <h2 className="type-interface mb-4">History</h2>

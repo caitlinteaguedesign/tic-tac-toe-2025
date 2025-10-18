@@ -13,54 +13,54 @@ const Game = () => {
   const [status, setStatus] = useState("Your move player X");
   const xIsNext = isXNext(currentMove);
   const currentSquares = history[currentMove];
-  
+
   const handlePlay = (nextSquares: TSquare[]) => {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
     const nextMove = nextHistory.length - 1;
     setHistory(nextHistory);
     setCurrentMove(nextMove);
     updateGameStatus(nextHistory[nextMove], nextMove);
-  }
+  };
 
   const undoMove = () => {
-    if(currentMove > 1) {
+    if (currentMove > 1) {
       goToMove(currentMove - 1);
     }
-  }
+  };
 
   const redoMove = () => {
-    if(currentMove < (history.length - 1)) {
+    if (currentMove < history.length - 1) {
       goToMove(currentMove + 1);
     }
-  }
+  };
 
   const resetGame = () => {
     setHistory([Array(9).fill(null)]);
     setCurrentMove(0);
     setStatus("Your move player X");
-  }
+  };
 
   const goToMove = (move: number) => {
     setCurrentMove(move);
     updateGameStatus(history[move], move);
-  }
-  
+  };
+
   const updateGameStatus = (squares: TSquare[], move: number) => {
     setStatus(`Your move player ${isXNext(move) ? "X" : "O"}`);
 
     const winningSquares = calculateWinner(squares);
 
-    if(winningSquares) {
+    if (winningSquares) {
       const winnerName = squares[winningSquares[0]];
-      setStatus(`Player ${winnerName}, wouldn't you prefer a good game of chess?`);
-    }
-
-    else {
-      if(calculateTie(squares)) {
+      setStatus(
+        `Player ${winnerName}, wouldn't you prefer a good game of chess?`
+      );
+    } else {
+      if (calculateTie(squares)) {
         setStatus("A strange game. The only winning move is not to play.");
       }
     }
-  }
+  };
 
   return (
     <div className="game-layout">
@@ -68,11 +68,27 @@ const Game = () => {
       <div className="card controls-layout">
         <h2 className="type-interface mb-4">Moves</h2>
         <div className="flex flex-col gap-2 pb-4 items-center card__separator-bottom">
-          <Button label="Undo" style="primary" arrow="ccw" onButtonClick={() => undoMove()} />
-          <Button label="Redo" style="primary" arrow="cw" onButtonClick={() => redoMove()} />
+          <Button
+            label="Undo"
+            style="primary"
+            arrow="ccw"
+            disabled={currentMove <= 1}
+            onButtonClick={() => undoMove()}
+          />
+          <Button
+            label="Redo"
+            style="primary"
+            arrow="cw"
+            disabled={currentMove === history.length - 1}
+            onButtonClick={() => redoMove()}
+          />
         </div>
         <div className="flex justify-center card__separator-top pt-8 pb-4">
-          <Button label="New Game" style="primary" onButtonClick={() => resetGame()} />
+          <Button
+            label="New Game"
+            style="primary"
+            onButtonClick={() => resetGame()}
+          />
         </div>
       </div>
       {/* status */}
@@ -113,6 +129,6 @@ const Game = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Game;

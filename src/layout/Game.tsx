@@ -83,7 +83,7 @@ const Game = () => {
             onButtonClick={() => redoMove()}
           />
         </div>
-        <div className="flex justify-center card__separator-top pt-8 pb-4">
+        <div className="new-game-layout card__separator-top">
           <Button
             label="New Game"
             style="primary"
@@ -102,30 +102,34 @@ const Game = () => {
         <div className="type-interface">Timer</div>
       </div>
       {/* history */}
-      <div className="card history-layout flex flex-col items-center">
+      <div className="card history-layout">
         <h2 className="type-interface mb-4">History</h2>
-        <ol className="flex flex-col gap-2 max-w-60">
-          {history.slice(1).map((_move, i) => (
-            <li key={`move-li_${i}`}>
-              {i === currentMove - 1 ? (
-                <Button
-                  label={`Viewing Move ${currentMove}`}
-                  style="secondary"
-                  full
-                  disabled
-                />
-              ) : (
-                <Button
-                  label={`Go to Move ${i + 1}`}
-                  onButtonClick={() => goToMove(i + 1)}
-                  style="secondary"
-                  arrow="right"
-                  full
-                />
-              )}
-            </li>
-          ))}
-        </ol>
+        {history.length > 1 ? (
+          <ol className="flex flex-col gap-2 max-w-60 pb-1">
+            {history.slice(1).map((_move, i) => (
+              <li key={`move-li_${i}`}>
+                {i === currentMove - 1 ? (
+                  <Button
+                    label={`Viewing Move ${currentMove}`}
+                    style="secondary"
+                    full
+                    disabled
+                  />
+                ) : (
+                  <Button
+                    label={`Go to Move ${i + 1}`}
+                    onButtonClick={() => goToMove(i + 1)}
+                    style="secondary"
+                    arrow="right"
+                    full
+                  />
+                )}
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <p className="pb-1">No moves yet.</p>
+        )}
       </div>
     </div>
   );

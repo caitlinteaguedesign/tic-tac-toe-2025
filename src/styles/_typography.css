@@ -1,12 +1,20 @@
 .type-page-title {
   font-family: var(--ff-heading);
-  font-size: var(--fs-page-title);
+  font-size: var(--fs-4);
   color: var(--color-primary-200);
+
+  @media screen and (min-width: 600px) {
+    font-size: var(--fs-5);
+  }
 }
 .type-interface {
   font-family: var(--ff-body);
-  font-size: var(--fs-1);
+  font-size: var(--fs-0);
   font-weight: 600;
   text-transform: uppercase;
   text-align: center;
+
+  @media screen and (min-width: 600px) {
+    font-size: var(--fs-1);
+  }
 }

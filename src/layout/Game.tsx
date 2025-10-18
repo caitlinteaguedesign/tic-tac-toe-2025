@@ -67,7 +67,7 @@ const Game = () => {
       {/* moves and new game */}
       <div className="card controls-layout">
         <h2 className="type-interface mb-4">Moves</h2>
-        <div className="flex flex-col gap-2 pb-4 items-center card__separator-bottom">
+        <div className="moves-layout card__separator-bottom">
           <Button
             label="Undo"
             style="primary"

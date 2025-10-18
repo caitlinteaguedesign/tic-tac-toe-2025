@@ -1,8 +1,10 @@
 import type { MouseEventHandler } from "react";
 import classNames from "classnames";
 import ArrowRight from "../assets/icons/arrow-right-secondary.svg";
-import ArrowCw from "../assets/icons/arrow-cw-primary.svg";
-import ArrowCcw from "../assets/icons/arrow-ccw-primary.svg";
+import ArrowCwPrimary from "../assets/icons/arrow-cw-primary.svg";
+import ArrowCcwPrimary from "../assets/icons/arrow-ccw-primary.svg";
+import ArrowCwDisabled from "../assets/icons/arrow-cw-disabled.svg";
+import ArrowCcwDisabled from "../assets/icons/arrow-ccw-disabled.svg";
 
 type ButtonProps = {
   label: string;
@@ -32,10 +34,10 @@ const Button = ({
       iconSrc = ArrowRight;
       break;
     case "cw":
-      iconSrc = ArrowCw;
+      iconSrc = disabled ? ArrowCwDisabled : ArrowCwPrimary;
       break;
     case "ccw":
-      iconSrc = ArrowCcw;
+      iconSrc = disabled ? ArrowCcwDisabled : ArrowCcwPrimary;
       break;
     default:
     // do nothing
@@ -54,6 +56,6 @@ const Button = ({
       </div>
     </button>
   );
-}
+};
 
 export default Button;

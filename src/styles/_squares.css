@@ -12,6 +12,12 @@
   font-size: var(--fs-6);
   line-height: 1;
 
+  &:focus,
+  &:focus-visible {
+    outline: 2px solid var(--color-primary-400);
+    outline-offset: -2px;
+  }
+
   &.square--default {
     color: var(--color-neutral-800);
     background-color: var(--color-neutral-0);
@@ -21,31 +27,26 @@
     color: var(--color-neutral-0);
     background-color: var(--color-neutral-850);
   }
-}
 
-.square:focus {
-  outline: 2px solid var(--color-primary-400);
-  outline-offset: -2px;
-}
+  /* rounded corners on the board */
+  &:first-child {
+    border-top-left-radius: var(--square-rounded);
+  }
+  &:nth-child(3) {
+    border-top-right-radius: var(--square-rounded);
+  }
+  &:nth-child(7) {
+    border-bottom-left-radius: var(--square-rounded);
+  }
+  &:last-child {
+    border-bottom-right-radius: var(--square-rounded);
+  }
 
-/* rounded corners on the board */
-.square:first-child {
-  border-top-left-radius: var(--square-rounded);
-}
-.square:nth-child(3) {
-  border-top-right-radius: var(--square-rounded);
-}
-.square:nth-child(7) {
-  border-bottom-left-radius: var(--square-rounded);
-}
-.square:last-child {
-  border-bottom-right-radius: var(--square-rounded);
-}
-
-/* lines between squares */
-.square:not(:nth-child(3n)) {
-  border-right: var(--square-border);
-}
-.square:nth-child(-n + 6) {
-  border-bottom: var(--square-border);
+  /* lines between squares */
+  &:not(:nth-child(3n)) {
+    border-right: var(--square-border);
+  }
+  &:nth-child(-n + 6) {
+    border-bottom: var(--square-border);
+  }
 }

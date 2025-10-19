@@ -2,7 +2,7 @@ const Footer = () => {
   const date = new Date().getFullYear();
 
   return (
-    <footer className="p-10 pb-16  bg-(--color-neutral-800) text-center grid gap-4">
+    <footer className="p-10 pb-16  bg-(--color-neutral-850) text-center grid gap-4">
       <p>©{date} Caitlin Teague Doerr</p>
       <p>
         To contact owner/developer, send an email to{" "}
@@ -17,6 +17,6 @@ const Footer = () => {
       </p>
     </footer>
   );
-}
+};
 
 export default Footer;

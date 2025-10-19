@@ -7,6 +7,9 @@ import calculateWinner from "../util/calculateWinner";
 import calculateTie from "../util/calculateTie";
 import isXNext from "../util/isXNext";
 import StopWatch from "../components/StopWatch";
+import Controls from "../components/Controls";
+import History from "../components/History";
+import Status from "../components/Status";
 
 const Game = () => {
   const [history, setHistory] = useState<TSquare[][]>([Array(9).fill(null)]);
@@ -69,69 +72,21 @@ const Game = () => {
 
   return (
     <div className="game-layout">
-      {/* moves and new game */}
-      <div className="card controls-layout">
-        <h2 className="type-interface mb-4">Moves</h2>
-        <div className="moves-layout card__separator-bottom">
-          <Button
-            label="Undo"
-            style="primary"
-            arrow="ccw"
-            disabled={currentMove <= 1}
-            onButtonClick={() => undoMove()}
-          />
-          <Button
-            label="Redo"
-            style="primary"
-            arrow="cw"
-            disabled={currentMove === history.length - 1}
-            onButtonClick={() => redoMove()}
-          />
-        </div>
-        <div className="new-game-layout card__separator-top">
-          <Button
-            label="New Game"
-            style="primary"
-            onButtonClick={() => resetGame()}
-          />
-        </div>
-      </div>
-      {/* status */}
-      <div className="card status-layout text-center text-white">{status}</div>
-
+      <Controls
+        currentMove={currentMove}
+        historyLength={history.length}
+        undo={() => undoMove()}
+        redo={() => redoMove()}
+        reset={() => resetGame()}
+      />
+      <Status status={status} />
       <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       <StopWatch isRunning={timerState} />
-
-      {/* history */}
-      <div className="card history-layout">
-        <h2 className="type-interface mb-4">History</h2>
-        {history.length > 1 ? (
-          <ol className="flex flex-col gap-2 max-w-60 pb-1">
-            {history.slice(1).map((_move, i) => (
-              <li key={`move-li_${i}`}>
-                {i === currentMove - 1 ? (
-                  <Button
-                    label={`Viewing Move ${currentMove}`}
-                    style="secondary"
-                    full
-                    disabled
-                  />
-                ) : (
-                  <Button
-                    label={`Go to Move ${i + 1}`}
-                    onButtonClick={() => goToMove(i + 1)}
-                    style="secondary"
-                    arrow="right"
-                    full
-                  />
-                )}
-              </li>
-            ))}
-          </ol>
-        ) : (
-          <p className="pb-1">No moves yet.</p>
-        )}
-      </div>
+      <History
+        currentMove={currentMove}
+        history={history}
+        goToMove={goToMove}
+      />
     </div>
   );
 };

@@ -13,11 +13,12 @@ const Game = () => {
   const [history, setHistory] = useState<TSquare[][]>([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState<number>(0);
   const [status, setStatus] = useState<string>("Your move player X");
+  const [resetTimerKey, setResetTimerKey] = useState<number>(0);
   const [timerState, toggleTimer] = useState<boolean>(true);
   const xIsNext = isXNext(currentMove);
   const currentSquares = history[currentMove];
 
-  const handlePlay = (nextSquares: TSquare[]) => {
+  const makeMove = (nextSquares: TSquare[]) => {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
     const nextMove = nextHistory.length - 1;
     setHistory(nextHistory);
@@ -41,6 +42,8 @@ const Game = () => {
     setHistory([Array(9).fill(null)]);
     setCurrentMove(0);
     setStatus("Your move player X");
+    toggleTimer(true);
+    setResetTimerKey((prevKey) => prevKey + 1);
   };
 
   const goToMove = (move: number) => {
@@ -73,13 +76,13 @@ const Game = () => {
       <Controls
         currentMove={currentMove}
         historyLength={history.length}
-        undo={() => undoMove()}
-        redo={() => redoMove()}
-        reset={() => resetGame()}
+        undo={undoMove}
+        redo={redoMove}
+        reset={resetGame}
       />
       <Status status={status} />
-      <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
-      <StopWatch isRunning={timerState} />
+      <Board xIsNext={xIsNext} squares={currentSquares} onMove={makeMove} />
+      <StopWatch key={resetTimerKey} isRunning={timerState} />
       <History
         currentMove={currentMove}
         history={history}

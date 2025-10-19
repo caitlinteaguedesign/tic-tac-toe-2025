@@ -5,10 +5,10 @@ import Square from "./Square";
 type BoardProps = {
   xIsNext: boolean;
   squares: TSquare[];
-  onPlay: Function;
+  onMove: Function;
 };
 
-const Board = ({ xIsNext, squares, onPlay }: BoardProps) => {
+const Board = ({ xIsNext, squares, onMove }: BoardProps) => {
   const winningSquares = calculateWinner(squares) || false;
 
   function handleClick(i: number) {
@@ -21,7 +21,7 @@ const Board = ({ xIsNext, squares, onPlay }: BoardProps) => {
     } else {
       nextSquares[i] = "O";
     }
-    onPlay(nextSquares);
+    onMove(nextSquares);
   }
 
   return (

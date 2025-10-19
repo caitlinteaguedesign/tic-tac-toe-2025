@@ -1,4 +1,5 @@
 import type { TSquare } from "../types/TSquare";
+import calculateTie from "../util/calculateTie";
 import calculateWinner from "../util/calculateWinner";
 import Square from "./Square";
 
@@ -10,9 +11,13 @@ type BoardProps = {
 
 const Board = ({ xIsNext, squares, onMove }: BoardProps) => {
   const winningSquares = calculateWinner(squares) || false;
+  const unplayable =
+    calculateTie(squares) ||
+    (winningSquares && calculateTie(squares)) ||
+    (winningSquares && !calculateTie(squares));
 
   function handleClick(i: number) {
-    if (winningSquares || squares[i]) {
+    if (unplayable || squares[i]) {
       return;
     }
     const nextSquares = squares.slice();
@@ -38,6 +43,7 @@ const Board = ({ xIsNext, squares, onMove }: BoardProps) => {
                 i === winningSquares[1] ||
                 i === winningSquares[2])
             }
+            disabled={unplayable}
             onSquareClick={() => handleClick(i)}
           />
         ))}

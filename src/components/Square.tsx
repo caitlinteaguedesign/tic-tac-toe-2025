@@ -7,10 +7,17 @@ type SquareProps = {
   id: number;
   value: TSquare;
   winner?: boolean;
+  disabled: boolean;
   onSquareClick: MouseEventHandler;
 };
 
-const Square = ({ id, value, winner = false, onSquareClick }: SquareProps) => {
+const Square = ({
+  id,
+  value,
+  winner = false,
+  disabled = false,
+  onSquareClick,
+}: SquareProps) => {
   const squareClasses = classNames("square", {
     "square--default": !winner,
     "square--winning": winner,
@@ -20,6 +27,7 @@ const Square = ({ id, value, winner = false, onSquareClick }: SquareProps) => {
       id={`square_${id}`}
       type="button"
       onClick={onSquareClick}
+      disabled={disabled}
       onKeyDown={(e) => changeFocus(e, "square_", id)}
       className={squareClasses}
     >

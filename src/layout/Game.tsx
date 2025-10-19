@@ -1,15 +1,13 @@
 import { useState } from "react";
 import type { TSquare } from "../types/TSquare";
-
-import Button from "../components/Button";
-import Board from "../components/Board";
-import calculateWinner from "../util/calculateWinner";
 import calculateTie from "../util/calculateTie";
+import calculateWinner from "../util/calculateWinner";
 import isXNext from "../util/isXNext";
-import StopWatch from "../components/StopWatch";
+import Board from "../components/Board";
 import Controls from "../components/Controls";
 import History from "../components/History";
 import Status from "../components/Status";
+import StopWatch from "../components/StopWatch";
 
 const Game = () => {
   const [history, setHistory] = useState<TSquare[][]>([Array(9).fill(null)]);

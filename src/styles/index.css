@@ -12,3 +12,4 @@ layer(base);
 @import "./_board.css" layer(components);
 @import "./_squares.css" layer(components);
 @import "./_link.css" layer(utilities);
+@import "./animations/index.css" layer(utilities);

@@ -20,25 +20,16 @@
   }
 
   &.square--default {
-    z-index: 0;
-    transform: scale(1);
     color: var(--color-neutral-800);
     background-color: var(--color-neutral-0);
-    transition: color 200ms ease-in-out 200ms,
-      background-color 200ms ease-in-out 200ms, border 200ms ease-in-out 200ms,
-      transform 200ms ease-in-out, border-radius 200ms ease-in-out;
+    transition: color 200ms ease-in-out 225ms,
+      background-color 200ms ease-in-out 225ms;
   }
 
   &.square--winning {
-    z-index: 1;
-    transform: scale(1.05);
     color: var(--color-neutral-0);
     background-color: var(--color-neutral-850);
-    border-color: var(--color-neutral-200) !important;
-    border-radius: 0.5rem !important;
-    transition: color 200ms ease-in-out, background-color 200ms ease-in-out,
-      border 200ms ease-in-out, transform 200ms ease-in-out 200ms,
-      border-radius 200ms ease-in-out 200ms;
+    transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
   }
 
   /* rounded corners on the board */
@@ -61,5 +52,15 @@
   }
   &:nth-child(-n + 6) {
     border-bottom: var(--square-border);
+  }
+
+  .square__value {
+    transform: scale(1);
+    transition: transform 200ms ease-in-out;
+
+    .square--winning & {
+      transform: scale(1.2);
+      transition: transform 200ms ease-in-out 225ms;
+    }
   }
 }

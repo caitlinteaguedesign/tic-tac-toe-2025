@@ -31,7 +31,7 @@ const Square = ({
       onKeyDown={(e) => changeFocus(e, "square_", id)}
       className={squareClasses}
     >
-      {value}
+      <span className="square__value">{value}</span>
     </button>
   );
 };

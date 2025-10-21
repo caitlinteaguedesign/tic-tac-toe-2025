@@ -5,6 +5,8 @@
   font-weight: 600;
   text-align: center;
 
+  transition: color ease-in-out 100ms, background-color ease-in-out 100ms;
+
   &:focus,
   &:focus-visible {
     outline: 2px solid white;

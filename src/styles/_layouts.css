@@ -55,6 +55,12 @@
 }
 
 .status-layout {
+  height: 61px;
+  overflow: hidden;
+
+  &.tall {
+    height: 90px;
+  }
   @media (min-width: 600px) {
     grid-column-start: 2;
   }

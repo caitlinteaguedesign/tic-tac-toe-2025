@@ -19,7 +19,9 @@
   /* colors */
 
   /* primary */
+  --color-primary-50: #ffc4cb;
   --color-primary-100: #ffa0ac;
+  --color-primary-150: #ff8392;
   --color-primary-200: #f46274;
   --color-primary-400: #e44157;
   --color-primary-500: #c1283c;

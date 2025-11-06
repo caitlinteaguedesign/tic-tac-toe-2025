@@ -9,10 +9,18 @@ import History from "../components/History";
 import Status from "../components/Status";
 import StopWatch from "../components/StopWatch";
 
+type StatusProps = {
+  message: string;
+  endGame: boolean;
+};
+
 const Game = () => {
   const [history, setHistory] = useState<TSquare[][]>([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState<number>(0);
-  const [status, setStatus] = useState<string>("Your move player X");
+  const [status, setStatus] = useState<StatusProps>({
+    message: "Your move player X",
+    endGame: false,
+  });
   const [resetTimerKey, setResetTimerKey] = useState<number>(0);
   const [timerState, toggleTimer] = useState<boolean>(true);
   const xIsNext = isXNext(currentMove);
@@ -41,7 +49,7 @@ const Game = () => {
   const resetGame = () => {
     setHistory([Array(9).fill(null)]);
     setCurrentMove(0);
-    setStatus("Your move player X");
+    setStatus({ message: "Your move player X", endGame: false });
     toggleTimer(true);
     setResetTimerKey((prevKey) => prevKey + 1);
   };
@@ -52,20 +60,27 @@ const Game = () => {
   };
 
   const updateGameStatus = (squares: TSquare[], move: number) => {
-    setStatus(`Your move player ${isXNext(move) ? "X" : "O"}`);
+    setStatus({
+      message: `Your move player ${isXNext(move) ? "X" : "O"}`,
+      endGame: false,
+    });
     toggleTimer(true);
 
     const winningSquares = calculateWinner(squares);
 
     if (winningSquares) {
       const winnerName = squares[winningSquares[0]];
-      setStatus(
-        `Player ${winnerName}, wouldn't you prefer a good game of chess?`
-      );
+      setStatus({
+        message: `Player ${winnerName}, wouldn't you prefer a good game of chess?`,
+        endGame: true,
+      });
       toggleTimer(false);
     } else {
       if (calculateTie(squares)) {
-        setStatus("A strange game. The only winning move is not to play.");
+        setStatus({
+          message: "A strange game. The only winning move is not to play.",
+          endGame: true,
+        });
         toggleTimer(false);
       }
     }
@@ -80,7 +95,7 @@ const Game = () => {
         redo={redoMove}
         reset={resetGame}
       />
-      <Status status={status} />
+      <Status message={status.message} endGame={status.endGame} />
       <Board xIsNext={xIsNext} squares={currentSquares} onMove={makeMove} />
       <StopWatch key={resetTimerKey} isRunning={timerState} />
       <History

@@ -1,10 +1,17 @@
 type StatusProps = {
-  status: string;
+  message: string;
+  endGame: boolean;
 };
 
-const Status = ({ status }: StatusProps) => {
+const Status = ({ message, endGame }: StatusProps) => {
   return (
-    <div className="card status-layout text-center text-white">{status}</div>
+    <div
+      className={`card status-layout ${
+        endGame && "tall"
+      } text-center text-white`}
+    >
+      <p>{message}</p>
+    </div>
   );
 };
 

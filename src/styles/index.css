@@ -11,5 +11,6 @@ layer(base);
 @import "./_buttons.css" layer(components);
 @import "./_board.css" layer(components);
 @import "./_squares.css" layer(components);
+@import "./_status.css" layer(utilities);
 @import "./_link.css" layer(utilities);
 @import "./animations/index.css" layer(utilities);

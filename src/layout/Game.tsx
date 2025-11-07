@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Mark, type TSquare } from "../types/TSquare";
 import { GameState, type TGameState } from "../types/TGameState";
+import { GameStateContext } from "../util/gameStateContext";
 import calculateTie from "../util/calculateTie";
 import calculateWinner from "../util/calculateWinner";
 import isXNext from "../util/isXNext";
@@ -81,28 +82,30 @@ const Game = () => {
   };
 
   return (
-    <div className="game-layout">
-      <Controls
-        disableUndo={currentMove <= 1}
-        disableRedo={currentMove === history.length - 1}
-        undo={undoMove}
-        redo={redoMove}
-        reset={resetGame}
-      />
-      <Status message={status} gameState={gameState} />
-      <Board
-        xIsNext={xIsNext}
-        squares={currentSquares}
-        gameState={gameState}
-        handleMove={makeMove}
-      />
-      <StopWatch key={timerKey} isRunning={gameState === GameState.PLAY} />
-      <History
-        currentMove={currentMove}
-        history={history}
-        goToMove={goToMove}
-      />
-    </div>
+    <GameStateContext value={gameState}>
+      <div className="game-layout">
+        <Controls
+          disableUndo={currentMove <= 1}
+          disableRedo={currentMove === history.length - 1}
+          undo={undoMove}
+          redo={redoMove}
+          reset={resetGame}
+        />
+        <Status />
+        <Board
+          xIsNext={xIsNext}
+          squares={currentSquares}
+          gameState={gameState}
+          handleMove={makeMove}
+        />
+        <StopWatch key={timerKey} isRunning={gameState === GameState.PLAY} />
+        <History
+          currentMove={currentMove}
+          history={history}
+          goToMove={goToMove}
+        />
+      </div>
+    </GameStateContext>
   );
 };
 

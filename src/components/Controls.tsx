@@ -2,16 +2,16 @@ import type { MouseEventHandler } from "react";
 import Button from "./Button";
 
 type ControlsProps = {
-  currentMove: number;
-  historyLength: number;
+  disableUndo: boolean;
+  disableRedo: boolean;
   undo: MouseEventHandler;
   redo: MouseEventHandler;
   reset: MouseEventHandler;
 };
 
 const Controls = ({
-  currentMove,
-  historyLength,
+  disableUndo,
+  disableRedo,
   undo,
   redo,
   reset,
@@ -24,14 +24,14 @@ const Controls = ({
           label="Undo"
           style="primary"
           arrow="ccw"
-          disabled={currentMove <= 1}
+          disabled={disableUndo}
           onButtonClick={undo}
         />
         <Button
           label="Redo"
           style="primary"
           arrow="cw"
-          disabled={currentMove === historyLength - 1}
+          disabled={disableRedo}
           onButtonClick={redo}
         />
       </div>

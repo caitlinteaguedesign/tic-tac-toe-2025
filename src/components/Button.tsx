@@ -40,7 +40,8 @@ const Button = ({
       iconSrc = disabled ? ArrowCcwDisabled : ArrowCcwPrimary;
       break;
     default:
-    // do nothing
+      // do nothing
+      break;
   }
 
   return (

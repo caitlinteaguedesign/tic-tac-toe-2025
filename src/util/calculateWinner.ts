@@ -23,7 +23,7 @@ const calculateWinner = (squares: TSquare[]) => {
     }
   }
   // no winner found
-  return null;
-}
+  return false;
+};
 
 export default calculateWinner;

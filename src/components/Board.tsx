@@ -1,20 +1,20 @@
-import type { TSquare } from "../types/TSquare";
-import calculateTie from "../util/calculateTie";
+import { GameState, type TGameState } from "../types/TGameState";
+import { type TSquare, Mark } from "../types/TSquare";
 import calculateWinner from "../util/calculateWinner";
 import Square from "./Square";
 
 type BoardProps = {
   xIsNext: boolean;
   squares: TSquare[];
-  onMove: Function;
+  gameState: TGameState;
+  handleMove: Function;
 };
 
-const Board = ({ xIsNext, squares, onMove }: BoardProps) => {
+const Board = ({ xIsNext, squares, gameState, handleMove }: BoardProps) => {
+  // todo: this logic can be governed at the square level if
+  // useContext contains the game state, nextPlayer, and winning ids
   const winningSquares = calculateWinner(squares) || false;
-  const unplayable =
-    calculateTie(squares) ||
-    (winningSquares && calculateTie(squares)) ||
-    (winningSquares && !calculateTie(squares));
+  const unplayable = gameState !== GameState.PLAY;
 
   function handleClick(i: number) {
     if (unplayable || squares[i]) {
@@ -22,11 +22,11 @@ const Board = ({ xIsNext, squares, onMove }: BoardProps) => {
     }
     const nextSquares = squares.slice();
     if (xIsNext) {
-      nextSquares[i] = "X";
+      nextSquares[i] = Mark.X;
     } else {
-      nextSquares[i] = "O";
+      nextSquares[i] = Mark.O;
     }
-    onMove(nextSquares);
+    handleMove(nextSquares);
   }
 
   return (

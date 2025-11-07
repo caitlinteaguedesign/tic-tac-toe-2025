@@ -22,14 +22,13 @@
   &.square--default {
     color: var(--color-neutral-800);
     background-color: var(--color-neutral-0);
-    transition: color 200ms ease-in-out 225ms,
-      background-color 200ms ease-in-out 225ms;
+    transition: color 100ms ease-in 125ms, background-color 100ms ease-in 125ms;
   }
 
   &.square--winning {
     color: var(--color-neutral-0);
     background-color: var(--color-neutral-850);
-    transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
+    transition: color 100ms ease-out, background-color 100ms ease-out;
   }
 
   /* rounded corners on the board */
@@ -56,11 +55,11 @@
 
   .square__value {
     transform: scale(1);
-    transition: transform 200ms ease-in-out;
+    transition: transform 100ms ease-in;
 
     .square--winning & {
       transform: scale(1.2);
-      transition: transform 200ms ease-in-out 225ms;
+      transition: transform 100ms ease-out 125ms;
     }
   }
 }

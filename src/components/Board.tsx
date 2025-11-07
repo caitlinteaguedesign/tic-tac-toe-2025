@@ -43,7 +43,6 @@ const Board = ({ xIsNext, squares, gameState, handleMove }: BoardProps) => {
                 i === winningSquares[1] ||
                 i === winningSquares[2])
             }
-            disabled={unplayable}
             onSquareClick={() => handleClick(i)}
           />
         ))}

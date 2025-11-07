@@ -12,6 +12,7 @@ import Status from "../components/Status";
 import StopWatch from "../components/StopWatch";
 
 const INITIAL_HISTORY = [Array(9).fill(null)];
+const INITIAL_WINNER_IDS = [-1, -1, -1];
 
 const Game = () => {
   const [history, setHistory] = useState<TSquare[][]>(INITIAL_HISTORY);
@@ -24,6 +25,7 @@ const Game = () => {
   const gameStateContextValue = {
     mode: gameState,
     xIsNext: isXNext(currentMove),
+    winnerIds: INITIAL_WINNER_IDS,
   };
 
   // todo: this is used by squares to update the history

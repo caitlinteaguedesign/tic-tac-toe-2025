@@ -7,7 +7,7 @@
     height: 90px;
   }
 
-  &:before {
+  &::before {
     content: "";
     position: absolute;
     width: 150%;
@@ -22,7 +22,7 @@
     transition: opacity 150ms ease-in-out;
   }
   &.winner {
-    &:before {
+    &::before {
       opacity: 1;
       animation: spin 6s linear infinite;
     }
@@ -38,7 +38,7 @@
     color: var(--color-neutral-0);
     transition: color 50ms ease-in-out;
 
-    &.winner {
+    .winner & {
       color: var(--color-primary-800);
     }
   }

@@ -1,10 +1,10 @@
 import type { MouseEventHandler } from "react";
 import classNames from "classnames";
-import ArrowRight from "../assets/icons/arrow-right-secondary.svg";
-import ArrowCwPrimary from "../assets/icons/arrow-cw-primary.svg";
-import ArrowCcwPrimary from "../assets/icons/arrow-ccw-primary.svg";
-import ArrowCwDisabled from "../assets/icons/arrow-cw-disabled.svg";
-import ArrowCcwDisabled from "../assets/icons/arrow-ccw-disabled.svg";
+import ArrowRight from "@icons/arrow-right-secondary.svg";
+import ArrowCwPrimary from "@icons/arrow-cw-primary.svg";
+import ArrowCcwPrimary from "@icons/arrow-ccw-primary.svg";
+import ArrowCwDisabled from "@icons/arrow-cw-disabled.svg";
+import ArrowCcwDisabled from "@icons/arrow-ccw-disabled.svg";
 
 type ButtonProps = {
   label: string;

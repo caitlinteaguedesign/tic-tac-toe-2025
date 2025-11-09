@@ -1,4 +1,4 @@
-import type { TSquare } from "../types/TSquare";
+import type { TSquare } from "@/types/TSquare";
 
 const calculateTie = (squares: TSquare[]) => {
   return squares.every((item) => item !== null);

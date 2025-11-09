@@ -22,7 +22,17 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* Paths */
+    "baseUrl": "./", // Important for path resolution
+    "paths": {
+      "@/*": ["./src/*"], // Map '@/*' to files within 'src/'
+      "@utils/*": ["src/utils/*"],
+      "@components/*": ["./src/components/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@icons/*": ["./src/assets/icons/*"]
+    }
   },
   "include": ["src"]
 }

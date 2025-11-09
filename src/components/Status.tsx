@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import classNames from "classnames";
-import { GameState } from "../types/TGameState";
-import { Mark } from "../types/TSquare";
-import { GameStateContext } from "../util/GameStateContext";
+import { GameState } from "@/types/TGameState";
+import { Mark } from "@/types/TSquare";
+import { GameStateContext } from "@/contexts/GameState";
 
 const Status = () => {
   const { mode, xIsNext } = useContext(GameStateContext);

@@ -1,4 +1,4 @@
-import type { TSquare } from "../types/TSquare";
+import type { TSquare } from "@/types/TSquare";
 
 const calculateWinner = (squares: TSquare[]) => {
   const lines = [

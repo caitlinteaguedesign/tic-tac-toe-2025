@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import classNames from "classnames";
-import { Mark, type TSquare } from "../types/TSquare";
-import { GameState } from "../types/TGameState";
-import { GameStateContext } from "../util/GameStateContext";
-import changeFocus from "../util/changeFocus";
+import { Mark, type TSquare } from "@/types/TSquare";
+import { GameState } from "@/types/TGameState";
+import { GameStateContext } from "@/contexts/GameState";
+import changeFocus from "@utils/changeFocus";
 
 type SquareProps = {
   id: number;

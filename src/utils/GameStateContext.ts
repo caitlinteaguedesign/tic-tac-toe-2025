@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { GameState, type TGameState } from "@/types/TGameState";
-import { INITIAL_HISTORY, INITIAL_WINNER_IDS } from "./initial.constants";
+import { INITIAL_HISTORY, INITIAL_WINNER_IDS } from "@utils/initial.constants";
 import type { TSquare } from "@/types/TSquare";
 
 type GameStateContextProps = {

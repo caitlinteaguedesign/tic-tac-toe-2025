@@ -13,4 +13,4 @@ layer(base);
 @import "./_squares.css" layer(components);
 @import "./_status.css" layer(utilities);
 @import "./_link.css" layer(utilities);
-@import "./animations/index.css" layer(utilities);
+@import "./animations/" layer(utilities);

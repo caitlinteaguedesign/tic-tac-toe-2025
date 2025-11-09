@@ -33,7 +33,7 @@ const Status = () => {
 
   return (
     <div className={cardClasses}>
-      <p className="text">{statusMessage}</p>
+      <p className="text max-w-[300px]">{statusMessage}</p>
     </div>
   );
 };

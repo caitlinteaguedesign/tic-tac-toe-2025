@@ -1,16 +1,16 @@
 import { useState } from "react";
-import type { TSquare } from "../types/TSquare";
-import { GameState, type TGameState } from "../types/TGameState";
-import { GameStateContext } from "../util/GameStateContext";
-import calculateTie from "../util/calculateTie";
-import calculateWinner from "../util/calculateWinner";
-import isXNext from "../util/isXNext";
-import Board from "../components/Board";
-import Controls from "../components/Controls";
-import History from "../components/History";
-import Status from "../components/Status";
-import StopWatch from "../components/StopWatch";
-import { INITIAL_HISTORY, INITIAL_WINNER_IDS } from "../util/initial";
+import type { TSquare } from "@/types/TSquare";
+import { GameState, type TGameState } from "@/types/TGameState";
+import { GameStateContext } from "@/contexts/GameState";
+import calculateTie from "@utils/calculateTie";
+import calculateWinner from "@utils/calculateWinner";
+import isXNext from "@utils/isXNext";
+import Board from "@components/Board";
+import Controls from "@components/Controls";
+import History from "@components/History";
+import Status from "@components/Status";
+import StopWatch from "@components/StopWatch";
+import { INITIAL_HISTORY, INITIAL_WINNER_IDS } from "@utils/initial.constants";
 
 const Game = () => {
   const [history, setHistory] = useState<TSquare[][]>(INITIAL_HISTORY);

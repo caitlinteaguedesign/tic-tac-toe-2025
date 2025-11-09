@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import formatTime from "../util/formatTime";
+import formatTime from "@utils/formatTime";
 
 type StopWatchProps = {
   isRunning: boolean;

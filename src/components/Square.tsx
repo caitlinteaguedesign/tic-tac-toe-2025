@@ -1,6 +1,6 @@
-import { useContext, type MouseEventHandler } from "react";
+import { useContext } from "react";
 import classNames from "classnames";
-import type { TSquare } from "../types/TSquare";
+import { Mark, type TSquare } from "../types/TSquare";
 import { GameState } from "../types/TGameState";
 import { GameStateContext } from "../util/GameStateContext";
 import changeFocus from "../util/changeFocus";
@@ -8,22 +8,31 @@ import changeFocus from "../util/changeFocus";
 type SquareProps = {
   id: number;
   value: TSquare;
-  winner?: boolean;
-  onSquareClick: MouseEventHandler;
 };
 
-const Square = ({ id, value, winner = false, onSquareClick }: SquareProps) => {
-  const { mode } = useContext(GameStateContext);
-  // todo get the winner ids
+const Square = ({ id, value }: SquareProps) => {
+  const { mode, xIsNext, current, winnerIds, onMove } =
+    useContext(GameStateContext);
   const squareClasses = classNames("square", {
-    "square--default": !winner, // default
-    "square--winning": winner, // only if has an id in the winners
+    "square--default":
+      id !== winnerIds[0] && id !== winnerIds[1] && id !== winnerIds[2],
+    "square--winning":
+      id === winnerIds[0] || id === winnerIds[1] || id === winnerIds[2],
   });
+  const handleClick = (id: number) => {
+    const nextSquares = current.slice();
+    if (xIsNext) {
+      nextSquares[id] = Mark.X;
+    } else {
+      nextSquares[id] = Mark.O;
+    }
+    onMove(nextSquares);
+  };
   return (
     <button
       id={`square_${id}`}
       type="button"
-      onClick={onSquareClick}
+      onClick={() => handleClick(id)}
       disabled={mode !== GameState.PLAY || (value && false)}
       onKeyDown={(e) => changeFocus(e, "square_", id)}
       className={squareClasses}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { TSquare } from "../types/TSquare";
-import { GameStateContext } from "../util/GameStateContext";
 import { GameState, type TGameState } from "../types/TGameState";
+import { GameStateContext } from "../util/GameStateContext";
 import calculateTie from "../util/calculateTie";
 import calculateWinner from "../util/calculateWinner";
 import isXNext from "../util/isXNext";
@@ -10,32 +10,30 @@ import Controls from "../components/Controls";
 import History from "../components/History";
 import Status from "../components/Status";
 import StopWatch from "../components/StopWatch";
-
-const INITIAL_HISTORY = [Array(9).fill(null)];
-const INITIAL_WINNER_IDS = [-1, -1, -1];
+import { INITIAL_HISTORY, INITIAL_WINNER_IDS } from "../util/initial";
 
 const Game = () => {
   const [history, setHistory] = useState<TSquare[][]>(INITIAL_HISTORY);
   const [currentMove, setCurrentMove] = useState<number>(0);
   const [gameState, setGameState] = useState<TGameState>(GameState.PLAY);
   const [timerKey, setTimerKey] = useState<number>(0);
-  const xIsNext = isXNext(currentMove);
+  const [winnerIds, setWinnerIds] = useState<number[]>(INITIAL_WINNER_IDS);
   const currentSquares = history[currentMove];
 
-  const gameStateContextValue = {
-    mode: gameState,
-    xIsNext: isXNext(currentMove),
-    winnerIds: INITIAL_WINNER_IDS,
-  };
-
-  // todo: this is used by squares to update the history
   const makeMove = (nextSquares: TSquare[]) => {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
     const nextMove = nextHistory.length - 1;
     setHistory(nextHistory);
     setCurrentMove(nextMove);
-    // runs after every move and transversing the history
     updateGameStatus(nextHistory[nextMove]);
+  };
+
+  const gameStateContextValue = {
+    mode: gameState,
+    xIsNext: isXNext(currentMove),
+    current: currentSquares,
+    winnerIds: winnerIds,
+    onMove: makeMove,
   };
 
   const goToMove = (move: number) => {
@@ -56,12 +54,15 @@ const Game = () => {
   };
 
   const updateGameStatus = (squares: TSquare[]) => {
-    if (calculateWinner(squares)) {
+    const winner = calculateWinner(squares);
+    if (winner) {
       setGameState(GameState.WIN);
+      setWinnerIds(winner);
     } else if (calculateTie(squares)) {
       setGameState(GameState.TIE);
     } else {
       setGameState(GameState.PLAY);
+      setWinnerIds(INITIAL_WINNER_IDS);
     }
   };
 
@@ -69,6 +70,7 @@ const Game = () => {
     setHistory(INITIAL_HISTORY);
     setCurrentMove(0);
     setGameState(GameState.PLAY);
+    setWinnerIds(INITIAL_WINNER_IDS);
     setTimerKey((prevKey) => prevKey + 1);
   };
 
@@ -83,12 +85,7 @@ const Game = () => {
           reset={resetGame}
         />
         <Status />
-        <Board
-          xIsNext={xIsNext}
-          squares={currentSquares}
-          gameState={gameState}
-          handleMove={makeMove}
-        />
+        <Board squares={currentSquares} />
         <StopWatch key={timerKey} isRunning={gameState === GameState.PLAY} />
         <History
           currentMove={currentMove}

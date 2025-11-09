@@ -12,19 +12,20 @@ const Status = () => {
     winner: mode === GameState.WIN,
   });
 
+  const currentPlayer = xIsNext ? Mark.O : Mark.X;
+  const nextPlayer = xIsNext ? Mark.X : Mark.O;
+
   let statusMessage = "Your move player X";
 
   switch (mode) {
     case GameState.PLAY:
-      statusMessage = `Your move player ${xIsNext ? Mark.X : Mark.O}`;
+      statusMessage = `Your move player ${nextPlayer}`;
       break;
     case GameState.TIE:
       statusMessage = "A strange game. The only winning move is not to play.";
       break;
     case GameState.WIN:
-      statusMessage = `Player ${
-        xIsNext ? Mark.O : Mark.X
-      }, wouldn't you prefer a good game of chess?`;
+      statusMessage = `Player ${currentPlayer}, wouldn't you prefer a good game of chess?`;
       break;
     default:
       break;

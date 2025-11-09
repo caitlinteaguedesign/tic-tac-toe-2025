@@ -1,5 +1,5 @@
-import Header from "./Header";
-import Game from "./Game";
+import Header from "@/layout/Header";
+import Game from "@/layout/Game";
 
 const Main = () => {
   return (
@@ -8,6 +8,6 @@ const Main = () => {
       <Game />
     </main>
   );
-}
+};
 
 export default Main;

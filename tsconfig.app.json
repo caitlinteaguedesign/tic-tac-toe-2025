@@ -25,9 +25,9 @@
     "noUncheckedSideEffectImports": true,
 
     /* Paths */
-    "baseUrl": "./", // Important for path resolution
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"], // Map '@/*' to files within 'src/'
+      "@/*": ["./src/*"],
       "@utils/*": ["src/utils/*"],
       "@components/*": ["./src/components/*"],
       "@assets/*": ["./src/assets/*"],

@@ -15,4 +15,5 @@ export default defineConfig({
       "@icons": path.resolve(__dirname, "src/assets/icons"),
     },
   },
+  base: "/archive/tic-tac-toe",
 });

@@ -1,5 +1,5 @@
-import Main from "./layout/Main";
-import Footer from "./layout/Footer";
+import Main from "@/layout/Main";
+import Footer from "@/layout/Footer";
 
 const App = () => {
   return (
@@ -8,6 +8,6 @@ const App = () => {
       <Footer />
     </div>
   );
-}
+};
 
 export default App;

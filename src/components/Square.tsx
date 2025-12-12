@@ -20,13 +20,15 @@ const Square = ({ id, value }: SquareProps) => {
       id === winnerIds[0] || id === winnerIds[1] || id === winnerIds[2],
   });
   const handleClick = (id: number) => {
-    const nextSquares = current.slice();
-    if (xIsNext) {
-      nextSquares[id] = Mark.X;
-    } else {
-      nextSquares[id] = Mark.O;
+    if (!value) {
+      const nextSquares = current.slice();
+      if (xIsNext) {
+        nextSquares[id] = Mark.X;
+      } else {
+        nextSquares[id] = Mark.O;
+      }
+      onMove(nextSquares);
     }
-    onMove(nextSquares);
   };
   return (
     <button

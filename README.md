@@ -1,6 +1,17 @@
 # Tic-Tac-Toe 2025
 
-## Styles
+Replaces the first version of the React Tic-Tac-Toe tutorial project completed in 2019.
+
+## Background
+
+The first version wasn't working in local anymore, and rather than fix that very simple app, I decided to instead recreate it with modern tools.
+
+- Still uses React but now with Vite instead of `create-react-app`
+- Vanilla CSS instead of Sass (css has come along way since I switched to Sass in 2017)
+- Adds Tailwind CSS for simple component styling
+- Adds TypeScript
+
+## Technology
 
 ### Tailwind
 
@@ -8,9 +19,9 @@ Tailwind v4 installed via these [instructions](https://tailwindcss.com/docs/inst
 
 ### CSS Reset (optional)
 
-Copied Josh W Comeau's [CSS reset](https://www.joshwcomeau.com/css/custom-css-reset/). Turns out Tailwind has it's own Preflight / CSS reset.
+Copied Josh W Comeau's [CSS reset](https://www.joshwcomeau.com/css/custom-css-reset/). Turns out Tailwind has it's own Preflight / CSS reset, so ultimately did not use this reset.
 
-## React + TypeScript + Vite
+### React + TypeScript + Vite
 
 Uses React v19 (2025).
 
@@ -21,11 +32,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-### Expanding the ESLint configuration
+#### Expanding the ESLint configuration
 
 If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
